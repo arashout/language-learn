@@ -10,15 +10,12 @@ export interface IAnswerCardProps {
     choiceState: ChoiceState;
 }
 
-export interface IAnswerCardState {
-}
-
-export default class AnswerCard extends React.Component<IAnswerCardProps, IAnswerCardState> {
+// export interface IAnswerCardState {
+// }
+// TODO: Figure out what is causing 
+export default class AnswerCard extends React.PureComponent<IAnswerCardProps> {
     constructor(props: IAnswerCardProps) {
         super(props);
-
-        this.state = {
-        }
     }
 
     public render() {
@@ -37,7 +34,7 @@ export default class AnswerCard extends React.Component<IAnswerCardProps, IAnswe
                     color={colorModifier}
                     outline={isOutlined}
                     onClick={this.props.onClickHandler}>
-                    <p className="display-4">{this.props.value}</p>
+                    <p className="display-2">{this.props.value}</p>
                 </Button>
             </div>
         );

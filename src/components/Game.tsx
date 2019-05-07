@@ -1,10 +1,11 @@
 import produce from 'immer';
 import * as React from 'react';
-import { Col, Container, Progress, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import { IRound } from 'src/shared';
 import config from '../config';
 import './Game.css'
 import Round from './Round';
+import Score from './Score';
 
 export interface IGameProps {
     sounds: string[];
@@ -42,7 +43,6 @@ export default class Game extends React.Component<IGameProps, IGameState> {
     }
 
     public choiceHandler = (correctChoice: string, pickedChoice: string): void => {
-        console.log(this.state);
         let nextState: IGameState;
         if (pickedChoice === correctChoice) {
             nextState = produce(this.state, draftState => {
@@ -73,7 +73,7 @@ export default class Game extends React.Component<IGameProps, IGameState> {
                     </Row>
                     <Row>
                         <Col>
-                            <Progress value={this.state.score} max={config.NUM_ROUNDS} />
+                            <Score value={this.state.score} />
                         </Col>
                     </Row>
                 </Container>
